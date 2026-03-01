@@ -1,0 +1,629 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.0 Chrome/140.0.7339.249 Electron/38.7.2 Safari/537.36" version="29.3.0">
+  <diagram id="yt-hld-v3" name="YouTube HLD — No Overlap Fix">
+    <mxGraphModel dx="4053" dy="3017" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3600" pageHeight="2600" background="#1a1a2e" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;fontColor=#FFFFFF;" value="YouTube-Like System Design — Scalable Video Streaming Platform (HLS/DASH + ABR)" vertex="1">
+          <mxGeometry height="44" width="3200" x="200" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="s_auth" parent="1" style="text;html=1;rounded=1;fillColor=#0d2137;strokeColor=#00aaff;fontColor=#00aaff;fontStyle=1;fontSize=11;" value="① AUTH" vertex="1">
+          <mxGeometry height="24" width="90" x="660" y="74" as="geometry" />
+        </mxCell>
+        <mxCell id="s_upload" parent="1" style="text;html=1;rounded=1;fillColor=#0d2a1a;strokeColor=#00ff88;fontColor=#00ff88;fontStyle=1;fontSize=11;" value="② PRE-SIGNED URL UPLOAD" vertex="1">
+          <mxGeometry height="24" width="240" x="660" y="405" as="geometry" />
+        </mxCell>
+        <mxCell id="s_proc" parent="1" style="text;html=1;rounded=1;fillColor=#2a1400;strokeColor=#ff8800;fontColor=#ff8800;fontStyle=1;fontSize=11;" value="③ VIDEO PROCESSING (HLS / DASH)" vertex="1">
+          <mxGeometry height="24" width="300" x="1620" y="74" as="geometry" />
+        </mxCell>
+        <mxCell id="s_cdn" parent="1" style="text;html=1;rounded=1;fillColor=#1a0030;strokeColor=#aa55ff;fontColor=#aa55ff;fontStyle=1;fontSize=11;" value="④ CDN + ABR STREAMING" vertex="1">
+          <mxGeometry height="24" width="220" x="800" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="s_search" parent="1" style="text;html=1;rounded=1;fillColor=#001428;strokeColor=#5599ff;fontColor=#5599ff;fontStyle=1;fontSize=11;" value="⑤ SEARCH" vertex="1">
+          <mxGeometry height="24" width="100" x="535" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="s_engage" parent="1" style="text;html=1;rounded=1;fillColor=#2a0000;strokeColor=#ff4444;fontColor=#ff4444;fontStyle=1;fontSize=11;" value="⑥ LIKES + COMMENTS" vertex="1">
+          <mxGeometry height="24" width="190" x="530" y="1140" as="geometry" />
+        </mxCell>
+        <mxCell id="s_ws" parent="1" style="text;html=1;rounded=1;fillColor=#1a1a00;strokeColor=#ffcc00;fontColor=#ffcc00;fontStyle=1;fontSize=11;" value="⑦ WEBSOCKET" vertex="1">
+          <mxGeometry height="24" width="140" x="130" y="1110" as="geometry" />
+        </mxCell>
+        <mxCell id="s_feed" parent="1" style="text;html=1;rounded=1;fillColor=#001a1a;strokeColor=#00ffcc;fontColor=#00ffcc;fontStyle=1;fontSize=11;" value="⑧ FEED + VIEW HISTORY" vertex="1">
+          <mxGeometry height="24" width="210" x="520" y="1540" as="geometry" />
+        </mxCell>
+        <mxCell id="users" parent="1" style="shape=image;html=1;fillColor=#eeeeee;verticalLabelPosition=bottom;verticalAlign=top;image=img/lib/active_directory/users.svg;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" value="Clients&#xa;Web / Android / iOS" vertex="1">
+          <mxGeometry height="90" width="90" x="50" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="lb" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3436;strokeColor=#636e72;fontColor=#FFFFFF;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;" value="Network Load Balancer&#xa;&#xa;• Distributes traffic across pods&#xa;• Rate Limiting (per IP / user)&#xa;• Health checks on backends&#xa;• Auto-scales with demand" vertex="1">
+          <mxGeometry height="110" width="210" x="200" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="e_u_lb" edge="1" parent="1" source="users" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="lb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="api_gw" parent="1" style="shape=mxgraph.aws4.endpoint;html=1;fillColor=#E7157B;verticalLabelPosition=bottom;verticalAlign=top;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" value="API Gateway&#xa;-Routing&#xa;-Middleware&#xa;-Authentication" vertex="1">
+          <mxGeometry height="100" width="100" x="480" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="e_lb_gw" edge="1" parent="1" source="lb" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="api_gw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="auth_svc" parent="1" style="shape=image;html=1;fillColor=#dae8fc;verticalLabelPosition=bottom;verticalAlign=top;image=img/lib/azure2/identity/Multi_Factor_Authentication.svg;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" value="Auth Service&#xa;(JWT Validation)" vertex="1">
+          <mxGeometry height="80" width="80" x="680" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="user_svc" parent="1" style="image;html=1;sketch=0;aspect=fixed;align=center;fontSize=10;image=img/lib/mscae/User_Resource.svg;verticalLabelPosition=bottom;verticalAlign=top;fontColor=#FFFFFF;fontStyle=1;" value="User Service&#xa;&#xa;• Register / Login&#xa;• Issues JWT Token&#xa;• bcrypt hash passwords&#xa;• Profile management" vertex="1">
+          <mxGeometry height="70" width="70" x="580" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="mysql" parent="1" style="outlineConnect=0;html=1;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;shape=mxgraph.aws3.mysql_db_instance;fillColor=#2E73B8;gradientColor=none;fontColor=#FFFFFF;fontStyle=0;fontSize=10;" value="MySQL — USER DB&#xa;&#xa;• UserID, Username, Email&#xa;• Password (bcrypt hashed)&#xa;• Channel info, Metadata" vertex="1">
+          <mxGeometry height="80" width="70" x="1010" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gw_auth" edge="1" parent="1" source="api_gw" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="auth_svc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="560" />
+              <mxPoint x="530" y="140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_gw_auth_lbl" connectable="0" parent="e_gw_auth" style="edgeLabel;html=1;fontSize=9;fontColor=#aaaaaa;" value="Auth Request" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_auth_user" edge="1" parent="1" source="auth_svc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#aaaaaa;html=1;" target="user_svc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_user_mysql" edge="1" parent="1" source="user_svc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="mysql">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1120" y="295" />
+              <mxPoint x="1120" y="140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_mysql_resp" edge="1" parent="1" source="mysql" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#00cc44;dashed=1;html=1;" target="user_svc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="960" y="140" />
+              <mxPoint x="960" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_mysql_resp_lbl" connectable="0" parent="e_mysql_resp" style="edgeLabel;html=1;fontSize=9;fontColor=#00cc44;" value="User verified / not verified → JWT" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-115" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upload_svc" parent="1" style="shape=mxgraph.ios7.icons.share;html=1;fillColor=#dae8fc;verticalLabelPosition=bottom;verticalAlign=top;strokeColor=#0080F0;strokeWidth=2;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" value="Upload Service&#xa;(Pre-Signed URL Gen)" vertex="1">
+          <mxGeometry height="80" width="80" x="680" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="meta_svc" parent="1" style="shape=mxgraph.aws4.resourceIcon;html=1;fillColor=#ED7100;verticalLabelPosition=bottom;verticalAlign=top;resIcon=mxgraph.aws4.kinesis_video_streams;strokeColor=#ffffff;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" value="Video Metadata Service" vertex="1">
+          <mxGeometry height="80" width="80" x="900" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_raw" parent="1" style="shape=mxgraph.alibaba_cloud.oss_object_storage_service;html=1;fillColor=#FF6A00;verticalLabelPosition=bottom;verticalAlign=top;strokeColor=none;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" value="Amazon S3&#xa;(Raw Video Storage)" vertex="1">
+          <mxGeometry height="90" width="90" x="1110" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_event" parent="1" style="image;html=1;aspect=fixed;perimeter=ellipsePerimeter;align=center;shadow=0;dashed=0;fontColor=#ffcc00;fontSize=10;spacingTop=3;image=img/lib/ibm/infrastructure/event_feed.svg;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=1;" value="S3 Event Notify&#xa;(Trigger on upload)" vertex="1">
+          <mxGeometry height="70" width="70" x="1350" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="videometa_db" parent="1" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.webicons.mongodb;gradientColor=#DFDEDE;fontColor=#FFFFFF;fontSize=10;" value="Video MetaData DB&#xa;(MongoDB)&#xa;&#xa;• VideoID, S3 URL&#xa;• Uploader ID, Name&#xa;• Description, Likes&#xa;• Status (Processing/Ready)" vertex="1">
+          <mxGeometry height="90" width="90" x="1160" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="meta_cache" parent="1" style="image;html=1;sketch=0;aspect=fixed;align=center;fontSize=10;image=img/lib/mscae/Cache_Redis_Product.svg;verticalLabelPosition=bottom;verticalAlign=top;fontColor=#FFFFFF;fontStyle=1;" value="Video META DATA cache&#xa;(Redis)&#xa;&#xa;• Hot video metadata cached&#xa;• Reduces DB reads by 10x&#xa;• TTL expiry for stale data" vertex="1">
+          <mxGeometry height="70" width="70" x="890" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gw_up" edge="1" parent="1" source="api_gw" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="upload_svc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_gw_up_lbl" connectable="0" parent="e_gw_up" style="edgeLabel;html=1;fontSize=9;fontColor=#aaaaaa;" value="POST /videos/upload/init" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_up_s3" edge="1" parent="1" source="upload_svc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#00ff88;html=1;" target="s3_raw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="380" />
+              <mxPoint x="1155" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_up_s3_lbl" connectable="0" parent="e_up_s3" style="edgeLabel;html=1;fontSize=9;fontColor=#00ff88;" value="Returns PreSigned URL" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_up_meta" edge="1" parent="1" source="upload_svc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="meta_svc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_meta_db" edge="1" parent="1" source="meta_svc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="videometa_db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="930" y="560" />
+              <mxPoint x="1205" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_meta_db_lbl" connectable="0" parent="e_meta_db" style="edgeLabel;html=1;fontSize=9;fontColor=#aaaaaa;" value="Stores Metadata" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_db_cache" edge="1" parent="1" source="videometa_db" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#ff4444;html=1;" target="meta_cache">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_s3_event" edge="1" parent="1" source="s3_raw" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#ff8800;html=1;" target="s3_event">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_s3_event_lbl" connectable="0" parent="e_s3_event" style="edgeLabel;html=1;fontSize=9;fontColor=#ff8800;" value="Upload triggers event" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-25" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_gw_getmeta" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#aaaaaa;dashed=1;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="569" />
+              <mxPoint x="530" y="559" />
+              <mxPoint x="930" y="559" />
+              <mxPoint x="930" y="409" />
+            </Array>
+            <mxPoint x="580" y="559.0588235294117" as="sourcePoint" />
+            <mxPoint x="930.0588235294117" y="429" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_gw_getmeta_lbl" connectable="0" parent="e_gw_getmeta" style="edgeLabel;html=1;fontSize=9;fontColor=#aaaaaa;" value="GET video metadata" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_direct" edge="1" parent="1" source="users" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=3;strokeColor=#ffcc00;dashed=1;html=1;" target="s3_raw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="95" y="30" />
+              <mxPoint x="1155" y="30" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_direct_lbl" connectable="0" parent="e_direct" style="edgeLabel;html=1;fontSize=11;fontColor=#ffcc00;fontStyle=1;" value="upload via preSignedURL — Direct to S3 (BYPASSES API GATEWAY — no bottleneck!)" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vps" parent="1" style="swimlane;html=1;startSize=34;fillColor=#1a2a3a;strokeColor=#ff8800;fontColor=#ff8800;fontSize=13;fontStyle=1;" value="Video Processing Service" vertex="1">
+          <mxGeometry height="680" width="1100" x="1630" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="vid_split" parent="vps" style="shape=mxgraph.aws4.resourceIcon;html=1;fillColor=#ED7100;verticalLabelPosition=bottom;verticalAlign=top;resIcon=mxgraph.aws4.kinesis_video_streams;strokeColor=#ffffff;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" value="VIDEO SPLITTER&#xa;&#xa;Splits raw video into&#xa;equal chunks (2-10s).&#xa;Each chunk sent to&#xa;parallel workers." vertex="1">
+          <mxGeometry height="90" width="90" x="60" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="transcoding" parent="vps" style="shape=mxgraph.alibaba_cloud.gts_global_transaction_service;html=1;fillColor=#FF6A00;verticalLabelPosition=bottom;verticalAlign=top;strokeColor=none;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" value="Transcoding&#xa;&#xa;Converts to:&#xa;144p, 240p, 360p&#xa;480p, 720p, 1080p&#xa;H.264 / H.265 codec" vertex="1">
+          <mxGeometry height="90" width="90" x="300" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="audio_proc" parent="vps" style="shape=mxgraph.ios7.icons.volume_medium;html=1;fillColor=#3B8DF1;verticalLabelPosition=bottom;verticalAlign=top;strokeColor=none;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" value="Audio Processing&#xa;&#xa;• AAC encoding&#xa;• Noise reduction&#xa;• Stereo/mono mix" vertex="1">
+          <mxGeometry height="90" width="90" x="320" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="transcript" parent="vps" style="shape=mxgraph.ios7.icons.message;html=1;fillColor=#dae8fc;verticalLabelPosition=bottom;verticalAlign=top;strokeColor=#0080F0;strokeWidth=2;fontColor=#333333;fontSize=10;fontStyle=1;" value="Transcript Generation&#xa;&#xa;• Auto captions (ASR)&#xa;• Multi-language subs&#xa;• .vtt subtitle files" vertex="1">
+          <mxGeometry height="90" width="90" x="310" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="translation" parent="vps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a3a1a;strokeColor=#00ff00;fontColor=#FFFFFF;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;" value="Translation&#xa;&#xa;• Auto-translate captions&#xa;• Multi-language output&#xa;• NLP powered" vertex="1">
+          <mxGeometry height="110" width="160" x="290" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="e_sp_t" edge="1" parent="vps" source="vid_split" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#ff8800;html=1;" target="transcoding">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_sp_a" edge="1" parent="vps" source="vid_split" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#3B8DF1;html=1;" target="audio_proc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="170" y="145" />
+              <mxPoint x="170" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_sp_tr" edge="1" parent="vps" source="vid_split" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#0080F0;html=1;" target="transcript">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="170" y="145" />
+              <mxPoint x="170" y="435" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_sp_tl" edge="1" parent="vps" source="vid_split" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#00ff00;html=1;" target="translation">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="170" y="145" />
+              <mxPoint x="170" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="manifest" parent="vps" style="image;html=1;sketch=0;aspect=fixed;align=center;fontSize=10;fontStyle=1;image=img/lib/mscae/Media_Encoding.svg;verticalLabelPosition=bottom;verticalAlign=top;fontColor=#FFFFFF;" value="Build and Store Manifest File&#xa;&#xa;HLS: master.m3u8 + per-res .m3u8&#xa;DASH: manifest.mpd (adaptive)&#xa;&#xa;Each quality has its own segment&#xa;list. ABR player picks quality by&#xa;real-time bandwidth." vertex="1">
+          <mxGeometry height="90" width="90" x="580" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="e_t_man" edge="1" parent="vps" source="transcoding" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#aaaaaa;html=1;" target="manifest">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_a_man" edge="1" parent="vps" source="audio_proc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#aaaaaa;html=1;" target="manifest">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mark_done" parent="vps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#006633;strokeColor=#00ff88;fontColor=#FFFFFF;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;" value="Mark Video Upload as &#39;DONE&#39;&#xa;&#xa;• Updates status in MongoDB&#xa;• Video is now live and playable&#xa;• CDN edge nodes prewarmed&#xa;• Notifies uploader" vertex="1">
+          <mxGeometry height="160" width="220" x="800" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="e_man_done" edge="1" parent="vps" source="manifest" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#00ff88;html=1;" target="mark_done">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_event_split" edge="1" parent="1" source="s3_event" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#ff8800;html=1;" target="vid_split">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1520" y="440" />
+              <mxPoint x="1520" y="245" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_event_split_lbl" connectable="0" parent="e_event_split" style="edgeLabel;html=1;fontSize=9;fontColor=#ff8800;" value="Triggers processing" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_proc" parent="1" style="shape=mxgraph.alibaba_cloud.oss_object_storage_service;html=1;fillColor=#FF6A00;verticalLabelPosition=bottom;verticalAlign=top;strokeColor=none;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" value="Object Storage S3&#xa;(Processed / Encoded)&#xa;&#xa;• HLS Segments (.ts)&#xa;• DASH Segments (.m4s)&#xa;• Manifest Files&#xa;  (.m3u8 / .mpd)" vertex="1">
+          <mxGeometry height="100" width="100" x="2880" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="e_done_s3" edge="1" parent="1" source="mark_done" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#7AA116;html=1;" target="s3_proc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_done_s3_lbl" connectable="0" parent="e_done_s3" style="edgeLabel;html=1;fontSize=9;fontColor=#7AA116;" value="Store S3 URL for Manifest File" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_done_meta" edge="1" parent="1" source="mark_done" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#00ff88;dashed=1;html=1;" target="videometa_db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2620" y="1020" />
+              <mxPoint x="1420" y="1020" />
+              <mxPoint x="1420" y="635" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_done_meta_lbl" connectable="0" parent="e_done_meta" style="edgeLabel;html=1;fontSize=9;fontColor=#00ff88;" value="Async Batch Update — Status: Ready/Published" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="res_lbl" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontColor=#aaaaaa;fontStyle=1;" value="Generated Bitrates (ABR)" vertex="1">
+          <mxGeometry height="22" width="250" x="2880" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="r144" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e3a1e;strokeColor=#00ff00;fontColor=#00ff00;fontSize=12;fontStyle=1;" value="144P" vertex="1">
+          <mxGeometry height="36" width="70" x="2880" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="r240" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e3a1e;strokeColor=#66ff66;fontColor=#66ff66;fontSize=12;fontStyle=1;" value="240P" vertex="1">
+          <mxGeometry height="36" width="70" x="2960" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="r360" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3a3a1e;strokeColor=#ffff00;fontColor=#ffff00;fontSize=12;fontStyle=1;" value="360P" vertex="1">
+          <mxGeometry height="36" width="70" x="3040" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="r480" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3a2a1e;strokeColor=#ffaa00;fontColor=#ffaa00;fontSize=12;fontStyle=1;" value="480P" vertex="1">
+          <mxGeometry height="36" width="70" x="2880" y="626" as="geometry" />
+        </mxCell>
+        <mxCell id="r720" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3a1e1e;strokeColor=#ff6600;fontColor=#ff6600;fontSize=12;fontStyle=1;" value="720P" vertex="1">
+          <mxGeometry height="36" width="70" x="2960" y="626" as="geometry" />
+        </mxCell>
+        <mxCell id="r1080" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a1e3a;strokeColor=#ff44ff;fontColor=#ff44ff;fontSize=12;fontStyle=1;" value="1080P" vertex="1">
+          <mxGeometry height="36" width="70" x="3040" y="626" as="geometry" />
+        </mxCell>
+        <mxCell id="monitoring" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a1a00;strokeColor=#ffaa00;fontColor=#FFFFFF;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;" value="Monitoring and Observability&#xa;&#xa;• Logging (ELK Stack)&#xa;• Grafana (dashboards)&#xa;• Prometheus (metrics)&#xa;• Alerting (PagerDuty)&#xa;• Distributed Tracing&#xa;• PUSH TO ALL NODES" vertex="1">
+          <mxGeometry height="180" width="220" x="2880" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="cdn" parent="1" style="shape=image;html=1;fillColor=#ffe6cc;verticalLabelPosition=bottom;verticalAlign=top;image=img/lib/azure2/app_services/CDN_Profiles.svg;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" value="CDN (CloudFront)&#xa;&#xa;• Caches frequent access files&#xa;• Edge nodes worldwide&#xa;• Low-latency delivery&#xa;• Adaptive Bitrate Streaming" vertex="1">
+          <mxGeometry height="100" width="100" x="900" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="e_s3_cdn" edge="1" parent="1" source="s3_proc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="cdn">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3150" y="340" />
+              <mxPoint x="3150" y="1130" />
+              <mxPoint x="1080" y="1130" />
+              <mxPoint x="1080" y="870" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_s3_cdn_lbl" connectable="0" parent="e_s3_cdn" style="edgeLabel;html=1;fontSize=9;fontColor=#aaaaaa;" value="Cache Frequent Access Files" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_cdn_users" edge="1" parent="1" source="cdn" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=3;strokeColor=#aa55ff;dashed=1;html=1;" target="users">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="870" />
+              <mxPoint x="95" y="870" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cdn_users_lbl" connectable="0" parent="e_cdn_users" style="edgeLabel;html=1;fontSize=11;fontColor=#aa55ff;fontStyle=1;" value="Download Segments (Adaptive Bitrate Streaming)" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-218" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_users_cdn" edge="1" parent="1" source="users" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aa55ff;html=1;" target="cdn">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="95" y="760" />
+              <mxPoint x="960" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_users_cdn_lbl" connectable="0" parent="e_users_cdn" style="edgeLabel;html=1;fontSize=9;fontColor=#aa55ff;" value="Quick Access (Cache Hit)" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="search_svc" parent="1" style="image;html=1;aspect=fixed;points=[];align=center;fontSize=11;fontStyle=1;image=img/lib/azure2/app_services/Search_Services.svg;verticalLabelPosition=bottom;verticalAlign=top;fontColor=#FFFFFF;" value="Search Service&#xa;(Uses Inverse Indexing)" vertex="1">
+          <mxGeometry height="90" width="90" x="545" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="elastic" parent="1" style="sketch=0;outlineConnect=0;html=1;fontColor=#FFFFFF;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=11;fontStyle=1;whiteSpace=wrap;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.elasticsearch_service;" value="Amazon Elasticsearch&#xa;(Search Cluster)" vertex="1">
+          <mxGeometry height="100" width="100" x="780" y="1010" as="geometry" />
+        </mxCell>
+        <mxCell id="cdc" parent="1" style="sketch=0;outlineConnect=0;html=1;fontColor=#FFFFFF;gradientColor=none;fillColor=#7AA116;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.connector;" value="CDC PIPELINE&#xa;(Debezium)&#xa;&#xa;Captures every DB write&#xa;and streams changes to&#xa;Elasticsearch (near&#xa;real-time sync)" vertex="1">
+          <mxGeometry height="90" width="90" x="1300" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gw_search" edge="1" parent="1" source="api_gw" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="search_svc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="610" />
+              <mxPoint x="460" y="925" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_gw_search_lbl" connectable="0" parent="e_gw_search" style="edgeLabel;html=1;fontSize=9;fontColor=#aaaaaa;" value="GET /search?q=" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_search_es" edge="1" parent="1" source="search_svc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#5599ff;html=1;" target="elastic">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="925" />
+              <mxPoint x="680" y="1060" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_search_es_lbl" connectable="0" parent="e_search_es" style="edgeLabel;html=1;fontSize=9;fontColor=#5599ff;" value="Query index" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_db_cdc" edge="1" parent="1" source="videometa_db" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#888888;dashed=1;html=1;" target="cdc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1120" y="635" />
+              <mxPoint x="1120" y="1080" />
+              <mxPoint x="1345" y="1080" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_db_cdc_lbl" connectable="0" parent="e_db_cdc" style="edgeLabel;html=1;fontSize=9;fontColor=#888888;" value="DB changes captured" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_cdc_es" edge="1" parent="1" source="cdc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#5599ff;html=1;" target="elastic">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1240" y="935" />
+              <mxPoint x="1240" y="1050" />
+              <mxPoint x="965" y="1050" />
+              <mxPoint x="965" y="1060" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cdc_es_lbl" connectable="0" parent="e_cdc_es" style="edgeLabel;html=1;fontSize=9;fontColor=#5599ff;" value="Index metadata" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="like_svc" parent="1" style="shape=mxgraph.gcp2.thumbs_up;html=1;fillColor=#3B8DF1;verticalLabelPosition=bottom;verticalAlign=top;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" value="Like Service" vertex="1">
+          <mxGeometry height="90" width="90" x="540" y="1180" as="geometry" />
+        </mxCell>
+        <mxCell id="comment_svc" parent="1" style="shape=mxgraph.ios7.icons.message;html=1;fillColor=#dae8fc;verticalLabelPosition=bottom;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" value="Comment Service&#xa;(Pagination + Ranking)" vertex="1">
+          <mxGeometry height="90" width="90" x="540" y="1400" as="geometry" />
+        </mxCell>
+        <mxCell id="eng_svc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d2d6a;strokeColor=#8888ff;fontColor=#FFFFFF;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;" value="Engagement Service&#xa;&#xa;Real Time likes:&#xa;• Store likes / comment Events&#xa;• Aggregate likes to NoSQL DB&#xa;• Hot Shards for popular video" vertex="1">
+          <mxGeometry height="130" width="250" x="760" y="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="redis_eng" parent="1" style="image;html=1;sketch=0;aspect=fixed;align=center;fontSize=10;image=img/lib/mscae/Cache_Redis_Product.svg;verticalLabelPosition=bottom;verticalAlign=top;fontColor=#FFFFFF;fontStyle=1;" value="Redis Cache&#xa;(Real-Time Counts)&#xa;&#xa;• Atomic INCR/DECR&#xa;• Latest comments list&#xa;• TTL expiry per video" vertex="1">
+          <mxGeometry height="100" width="100" x="950" y="1470" as="geometry" />
+        </mxCell>
+        <mxCell id="kafka_eng" parent="1" style="shape=mxgraph.aws4.resourceIcon;html=1;fillColor=#8C4FFF;verticalLabelPosition=bottom;verticalAlign=top;resIcon=mxgraph.aws4.managed_streaming_for_kafka;strokeColor=#ffffff;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" value="Event Bus (Kafka)&#xa;Topic: engagement-events" vertex="1">
+          <mxGeometry height="90" width="90" x="1120" y="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="nosql_db" parent="1" style="image;html=1;aspect=fixed;points=[];align=center;fontSize=10;image=img/lib/azure2/other/Managed_Instance_Apache_Cassandra.svg;verticalLabelPosition=bottom;verticalAlign=top;fontColor=#FFFFFF;fontStyle=1;" value="NOsql DB&#xa;(DynamoDB)&#xa;&#xa;Likes + Comments&#xa;persisted async" vertex="1">
+          <mxGeometry height="90" width="90" x="1380" y="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="flink" parent="1" style="shape=mxgraph.aws3.elasticsearch_service;html=1;fillColor=#F58534;verticalLabelPosition=bottom;verticalAlign=top;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" value="Stream Processor&#xa;(Apache Flink)&#xa;&#xa;• Real-time view count&#xa;  aggregation&#xa;• Trending detection&#xa;• Auto Scaling&#xa;• GPU Enabled workers" vertex="1">
+          <mxGeometry height="90" width="90" x="1640" y="1190" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gw_like" edge="1" parent="1" source="api_gw" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="like_svc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="610" />
+              <mxPoint x="460" y="1225" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_gw_like_lbl" connectable="0" parent="e_gw_like" style="edgeLabel;html=1;fontSize=9;fontColor=#aaaaaa;" value="POST /like" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gw_comment" edge="1" parent="1" source="api_gw" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="comment_svc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="610" />
+              <mxPoint x="460" y="1445" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_gw_comment_lbl" connectable="0" parent="e_gw_comment" style="edgeLabel;html=1;fontSize=9;fontColor=#aaaaaa;" value="POST /comments" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_like_eng" edge="1" parent="1" source="like_svc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="eng_svc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_comment_eng" edge="1" parent="1" source="comment_svc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="eng_svc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="1445" />
+              <mxPoint x="885" y="1445" />
+              <mxPoint x="885" y="1330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_eng_redis" edge="1" parent="1" source="eng_svc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#ff4444;html=1;" target="redis_eng">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="990" y="1390" />
+              <mxPoint x="990" y="1390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_eng_redis_lbl" connectable="0" parent="e_eng_redis" style="edgeLabel;html=1;fontSize=9;fontColor=#ff4444;" value="Increment / Decrement Likes" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_redis_users" edge="1" parent="1" source="redis_eng" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#ff4444;dashed=1;html=1;" target="users">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="95" y="1530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_redis_users_lbl" connectable="0" parent="e_redis_users" style="edgeLabel;html=1;fontSize=9;fontColor=#ff4444;" value="Sends back Likes and Comments from local cache (Real-time)" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="35" y="10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_eng_kafka" edge="1" parent="1" source="eng_svc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#8C4FFF;html=1;" target="kafka_eng">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_kafka_nosql" edge="1" parent="1" source="kafka_eng" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="nosql_db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_kafka_nosql_lbl" connectable="0" parent="e_kafka_nosql" style="edgeLabel;html=1;fontSize=9;fontColor=#aaaaaa;" value="Persist likes/comments" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_kafka_flink" edge="1" parent="1" source="kafka_eng" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#F58534;html=1;" target="flink">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1250" y="1245" />
+              <mxPoint x="1250" y="1430" />
+              <mxPoint x="1620" y="1430" />
+              <mxPoint x="1620" y="1235" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_kafka_flink_lbl" connectable="0" parent="e_kafka_flink" style="edgeLabel;html=1;fontSize=9;fontColor=#F58534;" value="Stream like/view events" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ws_gw" parent="1" style="shape=mxgraph.aws3.traditional_server;html=1;fillColor=#7D7C7C;verticalLabelPosition=bottom;verticalAlign=top;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" value="WebSocket Gateway&#xa;&#xa;• Persistent WS connections&#xa;• Subscribe to Events (Pub/Sub)&#xa;• Real-time notifications&#xa;• Like / comment updates" vertex="1">
+          <mxGeometry height="100" width="100" x="150" y="1190" as="geometry" />
+        </mxCell>
+        <mxCell id="e_users_ws" edge="1" parent="1" source="users" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#ffcc00;html=1;" target="ws_gw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="95" y="1240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_users_ws_lbl" connectable="0" parent="e_users_ws" style="edgeLabel;html=1;fontSize=9;fontColor=#ffcc00;" value="Subscribe to real-time events" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_redis_ws" edge="1" parent="1" source="redis_eng" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#ffcc00;dashed=1;html=1;" target="ws_gw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="1480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_redis_ws_lbl" connectable="0" parent="e_redis_ws" style="edgeLabel;html=1;fontSize=9;fontColor=#ffcc00;" value="Pub/Sub push" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-174" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="view_svc" parent="1" style="html=1;verticalLabelPosition=bottom;align=center;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.video_conversation;fillColor=#dae8fc;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" value="View Service" vertex="1">
+          <mxGeometry height="90" width="90" x="540" y="1590" as="geometry" />
+        </mxCell>
+        <mxCell id="view_db" parent="1" style="image;html=1;aspect=fixed;perimeter=ellipsePerimeter;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/database_server.svg;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" value="View Database&#xa;(Cassandra)" vertex="1">
+          <mxGeometry height="80" width="80" x="790" y="1600" as="geometry" />
+        </mxCell>
+        <mxCell id="history_db" parent="1" style="image;html=1;aspect=fixed;points=[];align=center;fontSize=10;image=img/lib/azure2/databases/Azure_Database_PostgreSQL_Server.svg;verticalLabelPosition=bottom;verticalAlign=top;fontColor=#FFFFFF;fontStyle=1;" value="User History / Graph DB&#xa;(Neo4j / DynamoDB)&#xa;&#xa;• Watch history per user&#xa;• Channel subscriptions&#xa;• User-Video interaction graph&#xa;• Input for recommendation" vertex="1">
+          <mxGeometry height="90" width="80" x="1080" y="1650" as="geometry" />
+        </mxCell>
+        <mxCell id="periodic_sync" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a00;strokeColor=#ffcc00;fontColor=#FFFFFF;fontSize=10;" value="Periodic Sync&#xa;(Batch Update live views)" vertex="1">
+          <mxGeometry height="56" width="200" x="730" y="1830" as="geometry" />
+        </mxCell>
+        <mxCell id="feed_svc" parent="1" style="html=1;whiteSpace=wrap;strokeColor=none;fillColor=#0079D6;labelPosition=center;verticalLabelPosition=middle;verticalAlign=top;align=center;fontSize=10;outlineConnect=0;spacingTop=-6;fontColor=#FFFFFF;sketch=0;shape=mxgraph.sitemap.upload;fontStyle=1;" value="Feed / Recommendation Service&lt;br&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;• Reads watch history + graph&lt;br&gt;• ML collaborative filtering&lt;br&gt;• Returns ranked video list&lt;br&gt;• Personalized home feed&lt;br&gt;• Pagination supported&lt;/div&gt;" vertex="1">
+          <mxGeometry height="150" width="220" x="1360" y="1630" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gw_view" edge="1" parent="1" source="api_gw" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="view_svc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="610" />
+              <mxPoint x="460" y="1635" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_view_viewdb" edge="1" parent="1" source="view_svc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;" target="view_db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_viewdb_sync" edge="1" parent="1" source="view_db" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#ffcc00;dashed=1;html=1;" target="periodic_sync">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_sync_meta" edge="1" parent="1" source="periodic_sync" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#ffcc00;dashed=1;html=1;" target="videometa_db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1280" y="1850" />
+              <mxPoint x="1280" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_sync_meta_lbl" connectable="0" parent="e_sync_meta" style="edgeLabel;html=1;fontSize=9;fontColor=#ffcc00;" value="Batch Update view counts" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-50" y="116" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_view_hist" edge="1" parent="1" source="view_svc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#00ffcc;html=1;" target="history_db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="585" y="1730" />
+              <mxPoint x="1110" y="1730" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_view_hist_lbl" connectable="0" parent="e_view_hist" style="edgeLabel;html=1;fontSize=9;fontColor=#00ffcc;" value="Log watch event" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_hist_feed" edge="1" parent="1" source="history_db" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#00ffcc;html=1;" target="feed_svc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1210" y="1705" />
+              <mxPoint x="1210" y="1705" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_hist_feed_lbl" connectable="0" parent="e_hist_feed" style="edgeLabel;html=1;fontSize=9;fontColor=#00ffcc;" value="User history input" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gw_feed" edge="1" parent="1" source="api_gw" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#aaaaaa;html=1;exitX=0.266;exitY=1.026;exitDx=0;exitDy=0;exitPerimeter=0;" target="feed_svc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="663" />
+              <mxPoint x="460" y="1900" />
+              <mxPoint x="1460" y="1900" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_gw_feed_lbl" connectable="0" parent="e_gw_feed" style="edgeLabel;html=1;fontSize=9;fontColor=#aaaaaa;" value="GET /feed (Personalized)" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_feed_users" edge="1" parent="1" source="feed_svc" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;strokeColor=#00ffcc;dashed=1;html=1;" target="users">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1460" y="1990" />
+              <mxPoint x="95" y="1990" />
+              <mxPoint x="95" y="670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_feed_users_lbl" connectable="0" parent="e_feed_users" style="edgeLabel;html=1;fontSize=9;fontColor=#00ffcc;" value="Personalized video feed returned" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_t" parent="1" style="text;html=1;rounded=1;fillColor=#222222;strokeColor=#555555;fontColor=#FFFFFF;fontStyle=1;fontSize=13;align=center;" value="LEGEND" vertex="1">
+          <mxGeometry height="28" width="130" x="50" y="2100" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3436;strokeColor=#636e72;fontColor=#FFFFFF;fontSize=11;" value="Microservice / Component" vertex="1">
+          <mxGeometry height="32" width="200" x="50" y="2138" as="geometry" />
+        </mxCell>
+        <mxCell id="l2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4a0080;strokeColor=#8C4FFF;fontColor=#FFFFFF;fontSize=11;" value="Kafka (Event-Driven)" vertex="1">
+          <mxGeometry height="32" width="200" x="50" y="2180" as="geometry" />
+        </mxCell>
+        <mxCell id="l3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8b0000;strokeColor=#ff4444;fontColor=#FFFFFF;fontSize=11;" value="Redis / In-Memory Cache" vertex="1">
+          <mxGeometry height="32" width="200" x="50" y="2222" as="geometry" />
+        </mxCell>
+        <mxCell id="l4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2a00;strokeColor=#ffcc00;fontColor=#ffcc00;fontSize=11;" value="Direct Upload (Bypasses GW)" vertex="1">
+          <mxGeometry height="32" width="200" x="50" y="2264" as="geometry" />
+        </mxCell>
+        <mxCell id="l5" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=11;fontColor=#aaaaaa;" value="- - -  Async / Response flow" vertex="1">
+          <mxGeometry height="30" width="220" x="50" y="2300" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
