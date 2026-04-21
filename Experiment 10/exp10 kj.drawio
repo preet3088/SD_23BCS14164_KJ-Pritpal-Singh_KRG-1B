@@ -1,0 +1,322 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.0 Chrome/140.0.7339.249 Electron/38.7.2 Safari/537.36" version="29.3.0">
+  <diagram name="Car-Review-Hub HLDS" id="1jWuLcgQOZVI9ZR-aK3M">
+    <mxGraphModel dx="1455" dy="873" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-1" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;fontSize=13;" value="&lt;b&gt;Experiment 10: Design a Car Review Hub (Spring Boot + Spring Security + JPA)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="32" width="720" x="360" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-2" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="A web platform where users can browse cars, write reviews, and rate them across multiple categories (Performance, Comfort, Mileage, etc.)." vertex="1">
+          <mxGeometry height="26" width="720" x="360" y="272" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-3" parent="1" style="whiteSpace=wrap;html=1;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="A. Functional Requirements" vertex="1">
+          <mxGeometry height="32" width="240" x="360" y="312" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-4" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="1. Users should be able to register and login to the platform." vertex="1">
+          <mxGeometry height="26" width="730" x="360" y="354" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-5" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="2. Users (ROLE_USER &amp; ROLE_ADMIN) should be able to browse all cars and view individual car details with reviews." vertex="1">
+          <mxGeometry height="26" width="730" x="360" y="382" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-6" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="3. Authenticated users should be able to submit a review for a car, along with multi-category ratings (Performance, Comfort, Mileage, etc.)." vertex="1">
+          <mxGeometry height="26" width="730" x="360" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-7" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="4. The system should automatically calculate and update the average rating of a car after every new review." vertex="1">
+          <mxGeometry height="26" width="730" x="360" y="438" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-8" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="5. Admin users (ROLE_ADMIN) should be able to add, update, and delete cars from the platform." vertex="1">
+          <mxGeometry height="26" width="730" x="360" y="466" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-9" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="6. Admin users should be able to manage rating categories (Rating Types)." vertex="1">
+          <mxGeometry height="26" width="730" x="360" y="494" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-10" parent="1" style="whiteSpace=wrap;html=1;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="B. Non-Functional Requirements" vertex="1">
+          <mxGeometry height="32" width="260" x="360" y="528" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-11" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="1. Scale: Moderate scale — community-driven car review site. Expected: ~50k-100k DAU." vertex="1">
+          <mxGeometry height="26" width="620" x="360" y="562" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-12" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="2. CAP Theorem:" vertex="1">
+          <mxGeometry height="28" width="140" x="360" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-13" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="&lt;b&gt;Consistency &gt;&gt;&gt; Availability&lt;/b&gt;" vertex="1">
+          <mxGeometry height="26" width="230" x="505" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-14" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="   Reviews, ratings, and average scores must be accurate and consistent across all users at all times." vertex="1">
+          <mxGeometry height="26" width="700" x="360" y="618" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-15" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="3. Latency:" vertex="1">
+          <mxGeometry height="28" width="110" x="360" y="646" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-16" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="API responses &lt; 200ms  |  Average rating recalculation on review submit &lt; 100ms" vertex="1">
+          <mxGeometry height="26" width="550" x="478" y="646" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-17" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="4. Security: Role-based access control (ROLE_USER vs ROLE_ADMIN). BCrypt password hashing. CSRF disabled (REST API)." vertex="1">
+          <mxGeometry height="26" width="730" x="360" y="674" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-18" parent="1" style="whiteSpace=wrap;html=1;fontStyle=1;fillColor=#ffe6cc;strokeColor=#d6b656;" value="C. Core Entities" vertex="1">
+          <mxGeometry height="32" width="170" x="360" y="708" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-19" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="&lt;b&gt;1. User&lt;/b&gt;" vertex="1">
+          <mxGeometry height="26" width="110" x="360" y="742" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-20" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="   userId, username, password (BCrypt hashed), role (ROLE_USER / ROLE_ADMIN), createdAt, updatedAt" vertex="1">
+          <mxGeometry height="26" width="680" x="478" y="742" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-21" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="&lt;b&gt;2. Car&lt;/b&gt;" vertex="1">
+          <mxGeometry height="26" width="110" x="360" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-22" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="   car_id, model, type, manufactureYear, image_url, average_rating" vertex="1">
+          <mxGeometry height="26" width="680" x="478" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-23" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="&lt;b&gt;3. Review&lt;/b&gt;" vertex="1">
+          <mxGeometry height="26" width="110" x="360" y="798" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-24" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="   review_id, car_id (FK), user_name, review_text, review_date, List&lt;Rating&gt;" vertex="1">
+          <mxGeometry height="26" width="680" x="478" y="798" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-25" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="&lt;b&gt;4. Rating&lt;/b&gt;" vertex="1">
+          <mxGeometry height="26" width="110" x="360" y="826" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-26" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="   rating_id, review_id (FK), ratingType (FK), rating_value (int)" vertex="1">
+          <mxGeometry height="26" width="680" x="478" y="826" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-27" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="&lt;b&gt;5. RatingType&lt;/b&gt;" vertex="1">
+          <mxGeometry height="26" width="110" x="360" y="854" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-28" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="   rating_type_id, name  (e.g., Performance, Comfort, Mileage, Value for Money, Safety)" vertex="1">
+          <mxGeometry height="26" width="680" x="478" y="854" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-29" parent="1" style="whiteSpace=wrap;html=1;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="D. API Design" vertex="1">
+          <mxGeometry height="32" width="155" x="360" y="888" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-30" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="&lt;b&gt;&lt;u&gt;Auth  [PUBLIC]&lt;/u&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="28" width="750" x="360" y="922" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-31" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="     1. POST: /auth/register          {username, password}   -&gt;   Register new user (ROLE_USER assigned)" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-32" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="     2. POST: /login                  {username, password}   -&gt;   Spring Security form login, returns session cookie" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="974" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-33" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="     3. GET:  /auth/user                                     -&gt;   Get currently authenticated user info" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="998" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-34" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="     4. POST: /logout                                        -&gt;   Logout, redirects to /welcome.html" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="1022" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-35" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="&lt;b&gt;&lt;u&gt;Cars  [USER + ADMIN: GET  |  ADMIN only: POST, PUT, DELETE]&lt;/u&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="28" width="750" x="360" y="1054" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-36" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="     1. GET:    /api/cars                       -&gt;  List all cars with average ratings" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="1082" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-37" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="     2. GET:    /api/cars/{id}                  -&gt;  Get car details by ID (with all reviews)" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="1106" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-38" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="     3. POST:   /api/cars                       -&gt;  Add a new car  [ADMIN]" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="1130" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-39" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="     4. PUT:    /api/cars/{id}                  -&gt;  Update car info  [ADMIN]" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="1154" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-40" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="     5. DELETE: /api/cars/{id}                  -&gt;  Delete a car  [ADMIN]" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="1178" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-41" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="&lt;b&gt;&lt;u&gt;Reviews  [USER + ADMIN]&lt;/u&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="28" width="750" x="360" y="1210" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-42" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="     1. GET:  /api/reviews                      -&gt;  List all reviews" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="1238" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-43" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="     2. POST: /api/reviews                      -&gt;  Submit a new review for a car (with multi-category ratings)" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="1262" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-44" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="        req body: { car_id, review_text, ratings: [ { ratingType: {name}, value } ] }" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="1286" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-45" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="        -&gt; Triggers average_rating recalculation on the parent Car entity" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="1310" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-46" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="&lt;b&gt;&lt;u&gt;Ratings  [USER + ADMIN]&lt;/u&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="28" width="750" x="360" y="1342" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-47" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="     1. GET:  /api/ratings                      -&gt;  List all individual ratings" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-48" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="     2. POST: /api/ratings                      -&gt;  Add a standalone rating" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="1394" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-49" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="&lt;b&gt;&lt;u&gt;Rating Types  [USER + ADMIN]&lt;/u&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="28" width="750" x="360" y="1426" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-50" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="     1. GET:  /api/rating-types                 -&gt;  List all rating categories" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="1454" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-51" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="     2. POST: /api/rating-types                 -&gt;  Add a new rating category  [ADMIN]" vertex="1">
+          <mxGeometry height="24" width="740" x="360" y="1478" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-52" parent="1" style="whiteSpace=wrap;html=1;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;" value="E. High Level Design" vertex="1">
+          <mxGeometry height="34" width="210" x="360" y="1522" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-53" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#232F3E;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;" value="" vertex="1">
+          <mxGeometry height="50" width="50" x="150" y="1612" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-54" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#232F3E;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;" value="" vertex="1">
+          <mxGeometry height="50" width="50" x="200" y="1647" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-55" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#232F3E;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;" value="" vertex="1">
+          <mxGeometry height="50" width="50" x="150" y="1672" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-56" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="Client" vertex="1">
+          <mxGeometry height="28" width="130" x="120" y="1732" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-57" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;rounded=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;" value="&lt;b&gt;Browser / Frontend&lt;/b&gt;&lt;br&gt;(welcome.html, login.html,&lt;br&gt;register.html, index.html, admin.html)" vertex="1">
+          <mxGeometry height="65" width="200" x="120" y="1757" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-58" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=10;" value="Spring Security&amp;#xa;Filter Chain&amp;#xa;&amp;#xa;- BCrypt Auth&amp;#xa;- Role-Based AuthZ&amp;#xa;- CSRF disabled&amp;#xa;- Form Login" vertex="1">
+          <mxGeometry height="130" width="200" x="390" y="1622" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-59" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;" value="All HTTP requests pass through here first" vertex="1">
+          <mxGeometry height="22" width="240" x="390" y="1757" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-60" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" value="AuthController&amp;#xa;/auth/**" vertex="1">
+          <mxGeometry height="65" width="130" x="240" y="1822" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-61" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" value="CarController&amp;#xa;/api/cars/**" vertex="1">
+          <mxGeometry height="65" width="130" x="400" y="1822" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-62" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" value="ReviewController&amp;#xa;/api/reviews/**" vertex="1">
+          <mxGeometry height="65" width="140" x="560" y="1822" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-63" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" value="RatingController&amp;#xa;/api/ratings/**" vertex="1">
+          <mxGeometry height="65" width="140" x="730" y="1822" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-64" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" value="RatingTypeController&amp;#xa;/api/rating-types/**" vertex="1">
+          <mxGeometry height="65" width="160" x="900" y="1822" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-65" parent="1" style="text;html=1;align=left;verticalAlign=top;resizable=0;strokeColor=#aaaaaa;fillColor=#ffffc0;fontSize=9;whiteSpace=wrap;" value="Public: /auth/register, /login, /logout&amp;#xa;User+Admin: GET /api/cars, reviews, ratings&amp;#xa;Admin only: POST/PUT/DELETE /api/cars" vertex="1">
+          <mxGeometry height="65" width="250" x="1090" y="1822" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-66" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=10;" value="UserRepository&amp;#xa;(JPA)" vertex="1">
+          <mxGeometry height="60" width="130" x="240" y="1932" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-67" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=10;" value="CarRepository&amp;#xa;(JPA)" vertex="1">
+          <mxGeometry height="60" width="130" x="400" y="1932" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-68" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=10;" value="ReviewService&amp;#xa;(avg recalc)" vertex="1">
+          <mxGeometry height="60" width="140" x="560" y="1932" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-69" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=10;" value="ReviewRepository&amp;#xa;(JPA)" vertex="1">
+          <mxGeometry height="60" width="140" x="730" y="1932" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-70" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=10;" value="RatingRepository&amp;#xa;(JPA)" vertex="1">
+          <mxGeometry height="60" width="140" x="900" y="1932" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-71" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=10;" value="RatingTypeRepository&amp;#xa;(JPA)" vertex="1">
+          <mxGeometry height="60" width="155" x="1070" y="1932" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-72" parent="1" style="text;html=1;align=left;verticalAlign=top;resizable=0;strokeColor=#aaaaaa;fillColor=#ffffc0;fontSize=9;whiteSpace=wrap;" value="ReviewService.saveReview() -&gt;&amp;#xa;saves review, recalculates avg rating,&amp;#xa;and updates Car.average_rating" vertex="1">
+          <mxGeometry height="60" width="240" x="1250" y="1932" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-73" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=10;" value="Spring Data JPA&amp;#xa;+ Hibernate ORM&amp;#xa;(Entity mapping,&amp;#xa;cascade, lazy fetch)" vertex="1">
+          <mxGeometry height="80" width="200" x="660" y="2032" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-74" parent="1" style="shape=mxgraph.flowchart.database;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=10;" value="H2 In-Memory DB&amp;#xa;(Development)" vertex="1">
+          <mxGeometry height="65" width="150" x="490" y="2152" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-75" parent="1" style="shape=mxgraph.flowchart.database;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=10;" value="PostgreSQL DB&amp;#xa;(Production)" vertex="1">
+          <mxGeometry height="65" width="150" x="690" y="2152" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-76" parent="1" style="text;html=1;align=left;verticalAlign=top;resizable=0;strokeColor=#aaaaaa;fillColor=#ffffc0;fontSize=9;whiteSpace=wrap;" value="Tables: USERS, cars, reviews,&amp;#xa;ratings, rating_types&amp;#xa;DDL auto: create (dev)" vertex="1">
+          <mxGeometry height="60" width="210" x="870" y="2152" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-77" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=10;" value="CustomUserDetailsService&amp;#xa;&amp;#xa;Loads user from DB by username&amp;#xa;for Spring Security auth" vertex="1">
+          <mxGeometry height="75" width="230" x="240" y="2272" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-78" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=10;" value="CustomAuthenticationSuccess&amp;#xa;Handler&amp;#xa;&amp;#xa;Redirects USER -&gt; /index.html&amp;#xa;Redirects ADMIN -&gt; /admin.html" vertex="1">
+          <mxGeometry height="75" width="250" x="510" y="2272" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-79" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;fontStyle=1;fontSize=10;" value="DataLoader&amp;#xa;&amp;#xa;Preloads sample cars &amp;amp;&amp;#xa;rating types on startup" vertex="1">
+          <mxGeometry height="75" width="200" x="790" y="2272" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-80" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=10;" value="Spring Actuator&amp;#xa;/actuator/health&amp;#xa;(Public endpoint)" vertex="1">
+          <mxGeometry height="75" width="170" x="1030" y="2272" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-81" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-58" value="HTTP Request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-82" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-60" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-83" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-61" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-84" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-62" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-85" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-63" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-86" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-64" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-87" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-66" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-88" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-67" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-89" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-68" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-90" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-71" value="lookup by name">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-91" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-70" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-92" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-71" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-93" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-68" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-69" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-94" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-68" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-67" value="update avg_rating">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-95" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-73" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-96" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-73" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-97" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-73" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-98" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-73" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-99" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-73" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-100" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-74" value="dev profile">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-101" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-75" value="prod profile">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-102" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-77" value="loadUserByUsername">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-103" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-78" value="on login success">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mP9hVKK-KknbQ29JO7BW-104" edge="1" parent="1" source="mP9hVKK-KknbQ29JO7BW-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;fontSize=9;" target="mP9hVKK-KknbQ29JO7BW-73" value="preload data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
